@@ -2,9 +2,11 @@
 #define MPU6050_H_
 
 #include "stm32f1xx_hal.h"
+#define MPU_PWR_MGMT1_ADDR 0x6B
+#define MPU_PWR_MGMT1_WAKEUP 0x0
 #define GYRO_SCALE_ADDR 0x1B
 #define ACC_SCALE_ADDR 0x1C
-#define MPU_ADDR 0x68
+#define MPU_ADDR 0xD0
 #define ACC_X_ADDR 0x3B
 #define ACC_Y_ADDR 0x3D
 #define ACC_Z_ADDR 0x3F
@@ -34,5 +36,6 @@ extern I2C_HandleTypeDef hi2c1;
 HAL_StatusTypeDef MPU_isReady(void);
 HAL_StatusTypeDef MPU_SetScale(enum GYRO_SCALE gyroscale, enum ACC_SCALE accscale);
 HAL_StatusTypeDef MPU_ReadAx(int16_t * pax);
+HAL_StatusTypeDef MPU_WakeUp();
 
 #endif

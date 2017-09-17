@@ -21,74 +21,58 @@ Target DLL:      Segger\JL2CM3.dll V2.99.13.0
 Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
-D:\build\mpu\MDK-ARM\BanCar.uvprojx
-Project File Date:  09/16/2017
+D:\build\BanCar\MDK-ARM\BanCar.uvprojx
+Project File Date:  09/17/2017
 
 <h2>Output:</h2>
 Build target 'BanCar'
+compiling stm32f1xx_hal_flash_ex.c...
+compiling stm32f1xx_hal.c...
+compiling stm32f1xx_hal_cortex.c...
+compiling stm32f1xx_hal_tim_ex.c...
+compiling stm32f1xx_hal_i2c.c...
+compiling stm32f1xx_hal_tim.c...
+compiling stm32f1xx_hal_pwr.c...
+compiling stm32f1xx_hal_flash.c...
+compiling stm32f1xx_hal_gpio_ex.c...
+compiling stm32f1xx_hal_dma.c...
+compiling stm32f1xx_hal_rcc_ex.c...
+compiling stm32f1xx_hal_gpio.c...
+compiling stm32f1xx_hal_rcc.c...
+compiling stm32f1xx_hal_uart.c...
+assembling startup_stm32f103xb.s...
 compiling main.c...
-../Src/main.c(105): warning:  #223-D: function "SD_UART_Send" declared implicitly
-                  SD_UART_Send(&huart1,mpu_ok,(uint16_t)15);
-../Src/main.c(109): warning:  #223-D: function "SD_UART_Send" declared implicitly
-                  SD_UART_Send(&huart1,mpu_not,(uint16_t)17);
-../Src/main.c(113): warning:  #177-D: variable "temper" was declared but never referenced
-          float temper = mpu1.Temperature;
-../Src/main.c(115): warning:  #177-D: variable "g_x" was declared but never referenced
-          int16_t g_x = mpu1.Gyroscope_X;
-../Src/main.c(116): warning:  #177-D: variable "g_y" was declared but never referenced
-          int16_t g_y = mpu1.Gyroscope_Y;
-../Src/main.c(117): warning:  #177-D: variable "g_z" was declared but never referenced
-          int16_t g_z = mpu1.Gyroscope_Z;
-../Src/main.c(120): warning:  #177-D: variable "a_x" was declared but never referenced
-          int16_t a_x = mpu1.Accelerometer_X;
-../Src/main.c(121): warning:  #177-D: variable "a_y" was declared but never referenced
-          int16_t a_y = mpu1.Accelerometer_Y;
-../Src/main.c(122): warning:  #177-D: variable "a_z" was declared but never referenced
-          int16_t a_z = mpu1.Accelerometer_Z;
-../Src/main.c(152): error:  #20: identifier "RCC_PERIPHCLK_USART1" is undefined
-    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_I2C1;
-../Src/main.c(152): error:  #20: identifier "RCC_PERIPHCLK_I2C1" is undefined
-    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_I2C1;
-../Src/main.c(153): error:  #136: struct "<unnamed>" has no field "Usart1ClockSelection"
-    PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK1;
-../Src/main.c(153): error:  #20: identifier "RCC_USART1CLKSOURCE_PCLK1" is undefined
-    PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK1;
-../Src/main.c(154): error:  #136: struct "<unnamed>" has no field "I2c1ClockSelection"
-    PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
-../Src/main.c(154): error:  #20: identifier "RCC_I2C1CLKSOURCE_HSI" is undefined
-    PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
-../Src/main.c(170): error:  #136: struct "<unnamed>" has no field "Timing"
-    hi2c1.Init.Timing = 0x2000090E;
-../Src/main.c(173): error:  #20: identifier "I2C_DUALADDRESS_DISABLED" is undefined
-    hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLED;
-../Src/main.c(175): error:  #136: struct "<unnamed>" has no field "OwnAddress2Masks"
-    hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
-../Src/main.c(175): error:  #20: identifier "I2C_OA2_NOMASK" is undefined
-    hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
-../Src/main.c(176): error:  #20: identifier "I2C_GENERALCALL_DISABLED" is undefined
-    hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLED;
-../Src/main.c(177): error:  #20: identifier "I2C_NOSTRETCH_DISABLED" is undefined
-    hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLED;
-../Src/main.c(182): warning:  #223-D: function "HAL_I2CEx_AnalogFilter_Config" declared implicitly
-    HAL_I2CEx_AnalogFilter_Config(&hi2c1, I2C_ANALOGFILTER_ENABLED);
-../Src/main.c(182): error:  #20: identifier "I2C_ANALOGFILTER_ENABLED" is undefined
-    HAL_I2CEx_AnalogFilter_Config(&hi2c1, I2C_ANALOGFILTER_ENABLED);
-../Src/main.c(198): error:  #136: struct "<unnamed>" has no field "OneBitSampling"
-    huart1.Init.OneBitSampling = UART_ONEBIT_SAMPLING_DISABLED ;
-../Src/main.c(198): error:  #20: identifier "UART_ONEBIT_SAMPLING_DISABLED" is undefined
-    huart1.Init.OneBitSampling = UART_ONEBIT_SAMPLING_DISABLED ;
-../Src/main.c(199): error:  #136: struct "<unnamed>" has no field "AdvancedInit"
-    huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-../Src/main.c(199): error:  #20: identifier "UART_ADVFEATURE_NO_INIT" is undefined
-    huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-../Src/main.c(217): warning:  #223-D: function "__GPIOA_CLK_ENABLE" declared implicitly
-    __GPIOA_CLK_ENABLE();
-../Src/main.c(218): warning:  #223-D: function "__GPIOB_CLK_ENABLE" declared implicitly
-    __GPIOB_CLK_ENABLE();
-../Src/main.c(230): error:  #20: identifier "GPIO_SPEED_LOW" is undefined
-    GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-../Src/main.c: 12 warnings, 18 errors
-"BanCar\BanCar.axf" - 18 Error(s), 12 Warning(s).
+../Inc/mpu6050.h(39): warning:  #1295-D: Deprecated declaration MPU_WakeUp - give arg types
+  HAL_StatusTypeDef MPU_WakeUp();
+../Inc/mpu6050.h(41): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Src/main.c(72): error:  #167: argument of type "UART_HandleTypeDef" is incompatible with parameter of type "UART_HandleTypeDef *"
+    HAL_UART_Transmit(huart1,&c,1,5);
+../Src/main.c(72): error:  #167: argument of type "int *" is incompatible with parameter of type "uint8_t *"
+    HAL_UART_Transmit(huart1,&c,1,5);
+../Src/main.c: 2 warnings, 2 errors
+compiling stm32f1xx_hal_msp.c...
+compiling stm32f1xx_it.c...
+compiling mpu6050.c...
+../Inc/mpu6050.h(39): warning:  #1295-D: Deprecated declaration MPU_WakeUp - give arg types
+  HAL_StatusTypeDef MPU_WakeUp();
+../Inc/mpu6050.h(41): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Src\mpu6050.c(4): error:  #20: identifier "uinit8_t" is undefined
+      uinit8_t buffer[2]={regAddr,data};
+..\Src\mpu6050.c(5): error:  #167: argument of type "I2C_HandleTypeDef" is incompatible with parameter of type "I2C_HandleTypeDef *"
+      return HAL_I2C_Master_Transmit(hi2c1,MPU_ADDR,buffer,2,5);
+..\Src\mpu6050.c(9): error:  #167: argument of type "I2C_HandleTypeDef" is incompatible with parameter of type "I2C_HandleTypeDef *"
+      HAL_I2C_Master_Transmit(hi2c1,MPU_ADDR,&regAddr,1,5);
+..\Src\mpu6050.c(10): error:  #167: argument of type "I2C_HandleTypeDef" is incompatible with parameter of type "I2C_HandleTypeDef *"
+      return HAL_I2C_Master_Receive(hi2c1,MPU_ADDR,data,1,5);
+..\Src\mpu6050.c(29): error:  #167: argument of type "int16_t *" is incompatible with parameter of type "uint8_t *"
+      MPU_ReadReg(ACC_X_ADDR+1,pax);
+..\Src\mpu6050.c(31): warning:  #1-D: last line of file ends without a newline
+  }
+..\Src\mpu6050.c: 3 warnings, 5 errors
+compiling system_stm32f1xx.c...
+"BanCar\BanCar.axf" - 7 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -99,7 +83,7 @@ Package Vendor: ARM
    * Component: CORE Version: 3.40.0
 
 <h2>Collection of Component include folders:</h2>
-  D:\build\mpu\MDK-ARM\RTE
+  D:\build\BanCar\MDK-ARM\RTE
   D:\Program Files (x86)\Keill_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include
   D:\Program Files (x86)\Keill_5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
 

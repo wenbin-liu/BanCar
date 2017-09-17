@@ -1,4 +1,18 @@
 #include "mpu6050.h"
+static HAL_StatusTypeDef MPU_WriteReg(uint8_t regAddr,uint8_t data)
+{
+    uinit8_t buffer[2]={regAddr,data};
+    return HAL_I2C_Master_Transmit(hi2c1,MPU_ADDR,buffer,2,5);
+}
+static HAL_StatusTypeDef MPU_ReadReg(uint8_t regAddr,uint8_t *data)
+{
+    HAL_I2C_Master_Transmit(hi2c1,MPU_ADDR,&regAddr,1,5);
+    return HAL_I2C_Master_Receive(hi2c1,MPU_ADDR,data,1,5);
+}
+HAL_StatusTypeDef MPU_WakeUp()
+{
+    return MPU_WriteReg(MPU_PWR_MGMT1_ADDR,MPU_PWR_MGMT1_WAKEUP);
+}
 
 HAL_StatusTypeDef MPU_isReady()
 {
@@ -12,10 +26,6 @@ HAL_StatusTypeDef MPU_SetScale(enum GYRO_SCALE gyroscale, enum ACC_SCALE accscal
 }
 HAL_StatusTypeDef MPU_ReadAx(int16_t * pax)
 {
-    uint8_t buffer = ACC_X_ADDR + 1;
-    HAL_I2C_Master_Transmit(&hi2c1, MPU_ADDR, &buffer, 1, 5);
-    HAL_I2C_Master_Receive(&hi2c1, MPU_ADDR,(uint8_t *) pax, 1, 5);
-    buffer--;
-    HAL_I2C_Master_Transmit(&hi2c1, MPU_ADDR, &buffer, 1, 5);
-    return HAL_I2C_Master_Receive(&hi2c1, MPU_ADDR, 1 + (uint8_t *) pax, 1, 5);
+    MPU_ReadReg(ACC_X_ADDR+1,pax);
+    return MPU_ReadReg(ACC_X_ADDR,(uint8_t *) pax + 1);
 }
