@@ -39,6 +39,7 @@
 #include "main.h"
 #include "stm32f1xx_hal.h"
 #include "mpu6050.h"
+#include "stdio.h"
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -69,7 +70,7 @@ static void MX_I2C1_Init(void);
 /* USER CODE END 0 */
 int fputc(int c,FILE * pf)
 {
-  HAL_UART_Transmit(huart1,&c,1,5);
+  HAL_UART_Transmit(&huart1,(uint8_t *)&c,1,5);
   return c;
 }
 
@@ -107,12 +108,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  MPU_WakeUp()?printf("Waking up MPU6050 failed!\n"):printf("MPU6050 wakes up!\n");
-  int16_t Ax;
+  MPU_isReady()?printf("Nothing Connected!\r\n"):printf("Connected!\r\n");
+  MPU_WakeUp()?printf("Waking up MPU6050 failed!\r\n"):printf("MPU6050 wakes up!\r\n");
+  HAL_Delay(500);
+  int16_t Ax,Gx;
   while (1)
   {
     MPU_ReadAx(& Ax);
-    printf("Ax: %d",Ax);
+    MPU_ReadGx(& Gx);
+    printf("Ax: %d\tGx: %d\r\n",Ax,Gx);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */

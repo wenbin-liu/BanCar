@@ -36,6 +36,11 @@ extern I2C_HandleTypeDef hi2c1;
 HAL_StatusTypeDef MPU_isReady(void);
 HAL_StatusTypeDef MPU_SetScale(enum GYRO_SCALE gyroscale, enum ACC_SCALE accscale);
 HAL_StatusTypeDef MPU_ReadAx(int16_t * pax);
-HAL_StatusTypeDef MPU_WakeUp();
+HAL_StatusTypeDef MPU_ReadAy(int16_t * pay);
+HAL_StatusTypeDef MPU_ReadAz(int16_t * paz);
+HAL_StatusTypeDef MPU_ReadGx(int16_t * pgx);
+HAL_StatusTypeDef MPU_ReadGy(int16_t * pgy);
+HAL_StatusTypeDef MPU_ReadGz(int16_t * pgz);
+HAL_StatusTypeDef MPU_WakeUp(void);
 
 #endif
