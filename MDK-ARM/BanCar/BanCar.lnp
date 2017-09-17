@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+"bancar\stm32f1xx_hal_flash_ex.o"
+"bancar\stm32f1xx_hal.o"
+"bancar\stm32f1xx_hal_cortex.o"
+"bancar\stm32f1xx_hal_tim_ex.o"
+"bancar\stm32f1xx_hal_i2c.o"
+"bancar\stm32f1xx_hal_tim.o"
+"bancar\stm32f1xx_hal_pwr.o"
+"bancar\stm32f1xx_hal_flash.o"
+"bancar\stm32f1xx_hal_gpio_ex.o"
+"bancar\stm32f1xx_hal_dma.o"
+"bancar\stm32f1xx_hal_rcc_ex.o"
+"bancar\stm32f1xx_hal_gpio.o"
+"bancar\stm32f1xx_hal_rcc.o"
+"bancar\stm32f1xx_hal_uart.o"
+"bancar\startup_stm32f103xb.o"
+"bancar\main.o"
+"bancar\stm32f1xx_hal_msp.o"
+"bancar\stm32f1xx_it.o"
+"bancar\mpu6050.o"
+"bancar\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "BanCar\BanCar.sct"
+
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "BanCar.map" -o BanCar\BanCar.axf
