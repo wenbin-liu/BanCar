@@ -116,7 +116,7 @@ int main(void)
   {
     MPU_ReadAx(& Ax);
     MPU_ReadGx(& Gx);
-    printf("Ax: %d\tGx: %d\r\n",Ax,Gx);
+    printf("Ax: %d Gx: %d\r\n",Ax,Gx);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
