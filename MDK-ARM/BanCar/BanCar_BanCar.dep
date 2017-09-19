@@ -364,7 +364,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h)(0x599A6FF8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x599A6FF8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x599A6FF8)
 F (startup_stm32f103xb.s)(0x59BE5235)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I D:\build\BanCar\MDK-ARM\RTE-I "D:\Program Files (x86)\Keill_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include"-I "D:\Program Files (x86)\Keill_5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"--pd "__UVISION_VERSION SETA 514" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1"--list startup_stm32f103xb.lst --xref -o bancar\startup_stm32f103xb.o --depend bancar\startup_stm32f103xb.d)
-F (../Src/main.c)(0x59BE811A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include --C99-I D:\build\BanCar\MDK-ARM\RTE-I "D:\Program Files (x86)\Keill_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include"-I "D:\Program Files (x86)\Keill_5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o bancar\main.o --omf_browse bancar\main.crf --depend bancar\main.d)
+F (../Src/main.c)(0x59C0C29F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include --C99-I D:\build\BanCar\MDK-ARM\RTE-I "D:\Program Files (x86)\Keill_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include"-I "D:\Program Files (x86)\Keill_5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o bancar\main.o --omf_browse bancar\main.crf --depend bancar\main.d)
 I (../Inc/main.h)(0x59BE5231)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x599A6FF7)
 I (../Inc/stm32f1xx_hal_conf.h)(0x59BE5231)
@@ -390,7 +390,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x599A6FF8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h)(0x599A6FF8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x599A6FF8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x599A6FF8)
-I (../Inc/mpu6050.h)(0x59BE6F9F)
+I (../Inc/mpu6050.h)(0x59C0B3D4)
+I (../Inc/banlance.h)(0x59C0B8FB)
 F (../Src/stm32f1xx_hal_msp.c)(0x59BE5231)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include --C99-I D:\build\BanCar\MDK-ARM\RTE-I "D:\Program Files (x86)\Keill_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include"-I "D:\Program Files (x86)\Keill_5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o bancar\stm32f1xx_hal_msp.o --omf_browse bancar\stm32f1xx_hal_msp.crf --depend bancar\stm32f1xx_hal_msp.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x599A6FF7)
 I (../Inc/stm32f1xx_hal_conf.h)(0x59BE5231)
@@ -445,7 +446,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x599A6FF8)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x599A6FF8)
 I (../Inc/stm32f1xx_it.h)(0x59BE5230)
 F (..\Src\mpu6050.c)(0x59BE6F9A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include --C99-I D:\build\BanCar\MDK-ARM\RTE-I "D:\Program Files (x86)\Keill_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include"-I "D:\Program Files (x86)\Keill_5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o bancar\mpu6050.o --omf_browse bancar\mpu6050.crf --depend bancar\mpu6050.d)
-I (../Inc/mpu6050.h)(0x59BE6F9F)
+I (../Inc/mpu6050.h)(0x59C0B3D4)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x599A6FF7)
 I (../Inc/stm32f1xx_hal_conf.h)(0x59BE5231)
 I (../Inc/main.h)(0x59BE5231)
@@ -455,6 +456,34 @@ I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x599A6FB7)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x599A6FB7)
 I (../Drivers/CMSIS/Include/core_cm3.h)(0x599A6FF7)
 I (D:\Program Files (x86)\Keill_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x599A6FF7)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x599A6FF7)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x599A6FF7)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x599A6FB7)
+I (D:\Program Files (x86)\Keill_5\ARM\ARMCC\include\stdio.h)(0x5475F300)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x599A6FF8)
+F (..\Src\banlance.c)(0x59C0C840)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include --C99-I D:\build\BanCar\MDK-ARM\RTE-I "D:\Program Files (x86)\Keill_5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include"-I "D:\Program Files (x86)\Keill_5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o bancar\banlance.o --omf_browse bancar\banlance.crf --depend bancar\banlance.d)
+I (D:\Program Files (x86)\Keill_5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (D:\Program Files (x86)\Keill_5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Inc/mpu6050.h)(0x59C0B3D4)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x599A6FF7)
+I (../Inc/stm32f1xx_hal_conf.h)(0x59BE5231)
+I (../Inc/main.h)(0x59BE5231)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x599A6FF8)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x599A6FF8)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x599A6FB7)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x599A6FB7)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x599A6FF7)
 I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x599A6FF7)
 I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x599A6FF7)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x599A6FF7)

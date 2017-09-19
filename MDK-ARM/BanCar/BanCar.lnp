@@ -18,6 +18,7 @@
 "bancar\stm32f1xx_hal_msp.o"
 "bancar\stm32f1xx_it.o"
 "bancar\mpu6050.o"
+"bancar\banlance.o"
 "bancar\system_stm32f1xx.o"
 --library_type=microlib --strict --scatter "BanCar\BanCar.sct"
 

@@ -40,6 +40,7 @@
 #include "stm32f1xx_hal.h"
 #include "mpu6050.h"
 #include "stdio.h"
+#include "banlance.h"
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -66,13 +67,23 @@ static void MX_I2C1_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
+double angle,angle_raw,gyro;
 int fputc(int c,FILE * pf)
 {
   HAL_UART_Transmit(&huart1,(uint8_t *)&c,1,5);
   return c;
 }
+void HAL_SYSTICK_Callback()
+{
+  if(HAL_GetTick()%5==0)
+  {
+    getAngle(&angle_raw,&gyro);
+    angle=0.05*angle_raw+0.95*(angle+gyro*0.005);
+    printf("%f %f\r\n",angle_raw,angle);
+  }
+}
+/* USER CODE END 0 */
+
 
 int main(void)
 {
@@ -103,24 +114,23 @@ int main(void)
   MX_I2C1_Init();
 
   /* USER CODE BEGIN 2 */
-
+  MPU_isReady()?printf("Nothing Connected!\r\n"):printf("Connected!\r\n");
+  MPU_WakeUp()?printf("Waking up MPU6050 failed!\r\n"):printf("MPU6050 wakes up!\r\n");
+  MPU_SetScale(GYRO_SCALE_500,ACC_SCALE_2G)?printf("Setting scale failed!"):printf("Setting scale succeeded!");
+  HAL_Delay(500);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  MPU_isReady()?printf("Nothing Connected!\r\n"):printf("Connected!\r\n");
-  MPU_WakeUp()?printf("Waking up MPU6050 failed!\r\n"):printf("MPU6050 wakes up!\r\n");
-  HAL_Delay(500);
-  int16_t Ax,Gx;
+  int16_t ax,ay,gz;
   while (1)
   {
-    MPU_ReadAx(& Ax);
-    MPU_ReadGx(& Gx);
-    printf("Ax: %d Gx: %d\r\n",Ax,Gx);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-
+    // MPU_ReadGy(&gz);
+    // printf("%d\r\n",gz);
+    // HAL_Delay(5);
   }
   /* USER CODE END 3 */
 
