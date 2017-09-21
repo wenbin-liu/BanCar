@@ -516,6 +516,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\mpu6050.c</FilePath>
             </File>
+            <File>
+              <FileName>banlance.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\banlance.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
