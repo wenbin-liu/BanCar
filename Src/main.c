@@ -38,15 +38,17 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_hal.h"
-#include "mpu6050.h"
-#include "stdio.h"
-#include "banlance.h"
+
 /* USER CODE BEGIN Includes */
+#include "banlance.h"
+#include "mpu6050.h"
 
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
+
+TIM_HandleTypeDef htim3;
 
 UART_HandleTypeDef huart1;
 
@@ -60,6 +62,10 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_I2C1_Init(void);
+static void MX_TIM3_Init(void);
+                                    
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+                                
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -67,7 +73,8 @@ static void MX_I2C1_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-double angle,angle_raw,gyro;
+float angle,angle_raw,gyro;
+int pwm;
 int fputc(int c,FILE * pf)
 {
   HAL_UART_Transmit(&huart1,(uint8_t *)&c,1,5);
@@ -76,14 +83,14 @@ int fputc(int c,FILE * pf)
 void HAL_SYSTICK_Callback()
 {
   if(HAL_GetTick()%5==0)
-  {
+  { 
     getAngle(&angle_raw,&gyro);
     angle=0.05*angle_raw+0.95*(angle+gyro*0.005);
+    pwm=banlanceControl(angle,gyro);
     printf("%f %f\r\n",angle_raw,angle);
   }
-}
+ }
 /* USER CODE END 0 */
-
 
 int main(void)
 {
@@ -112,19 +119,28 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_I2C1_Init();
+  MX_TIM3_Init();
 
   /* USER CODE BEGIN 2 */
+
   MPU_isReady()?printf("Nothing Connected!\r\n"):printf("Connected!\r\n");
   MPU_WakeUp()?printf("Waking up MPU6050 failed!\r\n"):printf("MPU6050 wakes up!\r\n");
   MPU_SetScale(GYRO_SCALE_500,ACC_SCALE_2G)?printf("Setting scale failed!"):printf("Setting scale succeeded!");
   HAL_Delay(500);
   /* USER CODE END 2 */
-
+  
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int16_t ax,ay,gz;
+    HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_2);
+    HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);
+    HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_4);
   while (1)
   {
+
+    pwmOutputL(pwm);
+      pwmOutputR(pwm);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -201,6 +217,71 @@ static void MX_I2C1_Init(void)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
+
+}
+
+/* TIM3 init function */
+static void MX_TIM3_Init(void)
+{
+
+  TIM_ClockConfigTypeDef sClockSourceConfig;
+  TIM_MasterConfigTypeDef sMasterConfig;
+  TIM_OC_InitTypeDef sConfigOC;
+
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 0;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 7200;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  HAL_TIM_MspPostInit(&htim3);
 
 }
 
